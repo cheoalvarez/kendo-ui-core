@@ -55,10 +55,14 @@ The example below demonstrates how to pre-process all data before binding the Tr
       return hash[rootLevel];
     }
 
+    //use a hierarchicalDataSource which is optimized for the TreeView
+    var ds = new kendo.data.HierarchicalDataSource({
+        data: processFlatTable(flatData, "id", "parent", 0)
+    });
+        
     // the tree for visualizing data
     $("#tree").kendoTreeView({
-      dataSource: processTable(flatData, "id", "parent", 0),
-      loadOnDemand: false
+      dataSource: ds
     });
     </script>
 
